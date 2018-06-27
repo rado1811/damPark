@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import BottomNavigation from './components/BottomNavigation';
+import FilterTheme from './components/FilterTheme';
 
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
     </h1>
     <Switch>
       <Route exact path="/" component={BottomNavigation} />
+      <Route exact path="/filtertheme" component={FilterTheme} />
     </Switch>
   </div>
 );
