@@ -1,4 +1,6 @@
 import React from 'react';
+import AttractionCard from '../AttractionCard';
+
 import { compose, withProps, withStateHandlers } from 'recompose';
 import {
   withScriptjs,
@@ -47,7 +49,7 @@ const StyledMap = compose(
       <Marker position={{ lat: 52.372, lng: 4.891 }} />
       <Marker position={{ lat: 52.372, lng: 4.891 }} options={{ icon: '../images/smokebullle.png' }} onClick={props.onToggleOpen}
 >
-{props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
+{props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p><AttractionCard /></p>
       </InfoWindow>}
      </Marker>
       <Marker position={{ lat: 52.3739315, lng: 4.880875899999978 }} options={{ icon: '../images/smokebullle.png' }} />
