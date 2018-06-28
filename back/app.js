@@ -9,6 +9,7 @@ import path from 'path';
 
 import index from './routes/index';
 import theme from './routes/theme';
+import guides from './routes/guides';
 
 const app = express();
 const debug = Debug('back:app');
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api', theme);
+app.use('/api', guides);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
