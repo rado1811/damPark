@@ -8,8 +8,11 @@ import Smoke from '../images/smoke.svg';
 import Art from '../images/art.svg';
 import Love from '../images/love.svg';
 import Eat from '../images/eat.svg';
-import mataG from '../images/mataG.svg';
-import vanGB from '../images/vanGB.svg';
+import mata from '../images/mata.svg';
+import vincent from '../images/vincent.svg';
+import houten from '../images/houten.svg';
+import dave from '../images/dave.svg';
+import entrance from '../images/buttoniconecity.svg';
 
 const styles = {
   root: {
@@ -22,18 +25,22 @@ class LabelBottomNavigation extends React.Component {
     super(props);
     this.state = {
       activites: [],
-      value: 'recents'
+      centerButton: entrance,
+      value: 'recents',
     };
   }
 
-  componentDidMount() {
-    this.filterBy();
-  }
+  // componentDidMount() {
+  //   this.filterBy();
+  // }
 
+  
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
-      .then(activites => this.setState({ activites }));
+      .then(activites => this.setState({ activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
+      console.log('1', this.state.activites);
+      console.log('2', this.state.centerButton);
   }
     
   handleChange = (event, value) => {
@@ -43,6 +50,7 @@ class LabelBottomNavigation extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+      // console.log('guide', this.state.activites[0])
 
     return (
     <div>
@@ -58,7 +66,7 @@ class LabelBottomNavigation extends React.Component {
                                 icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
         <BottomNavigationAction value="hero" 
                                 style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}} 
-                                icon={<img src={vanGB} alt="logo_guide" width="100px" height="auto"/>} />
+                                icon={<img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto"/>} />
         <BottomNavigationAction value="love" 
                                 style={{padding: '1px'}} 
                                 onClick={() => this.filterBy("love")} 
