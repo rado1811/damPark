@@ -8,6 +8,7 @@ import {
   InfoWindow,
 } from 'react-google-maps';
 import BottomNavigation from '../BottomNavigation';
+/*global google*/
 
 const demoFancyMapStyles = require('./style.json');
 
@@ -28,6 +29,16 @@ const StyledMap = compose(
   }),
   withScriptjs,
   withGoogleMap,
+  withStateHandlers(() => ({
+    iconUrl: '../images/smokegreen.svg',
+    icon2Url: '../images/eat.svg',
+    iconSize: new google.maps.Size(80, 80)
+}), {
+        onMarkerClick: () => () => ({
+            iconUrl: "https://maps.google.com/mapfiles/ms/icons/blue.png",
+            iconSize: new google.maps.Size(10, 10)
+        })
+    })
 )(props => (
   <div>
     <GoogleMap
@@ -44,14 +55,11 @@ const StyledMap = compose(
         fullscreenControl: false,
       }}
     >
-      <Marker position={{ lat: 52.372, lng: 4.891 }} />
-      <Marker position={{ lat: 52.372, lng: 4.891 }} options={{ icon: '../images/smokebullle.png' }} onClick={props.onToggleOpen}
->
-{props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
+      <Marker position={{ lat: 52.379189, lng: 4.898455 }} icon={{ url: props.icon2Url, scaledSize: props.iconSize }} onClick={props.onToggleOpen} >
+        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
       </InfoWindow>}
      </Marker>
-      <Marker position={{ lat: 52.3739315, lng: 4.880875899999978 }} options={{ icon: '../images/smokebullle.png' }} />
-      <Marker position={{ lat: 52.35024434191204, lng: 4.88150973951781 }} options={{ icon: '../images/smokebullle.png' }} />
+      <Marker position={{ lat: 52.35024434191204, lng: 4.88150973951781 }} icon={{ url: props.iconUrl, scaledSize: props.iconSize }} />
     </GoogleMap>
     <BottomNavigation />
   </div>
