@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import AppBar from '../AppBar';
 import './Map.css';
 import './style.json';
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -178,8 +179,9 @@ static defaultProps = {
 render() {
     
     return (
-        
+    <AppBar />   
     <div style={{ height: '90vh', width: '100%' }}>
+        
         <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDxvyxdfpn92FdMg8gAYSUBCW0--1zHdWo' }}
         defaultCenter={this.props.center}

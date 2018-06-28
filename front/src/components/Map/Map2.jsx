@@ -9,6 +9,7 @@ import {
 } from 'react-google-maps';
 import BottomNavigation from '../BottomNavigation';
 import AppBar from '../AppBar';
+import './Map2.css';
 
 const demoFancyMapStyles = require('./style.json');
 
@@ -16,10 +17,10 @@ const StyledMap = compose(
   withStateHandlers(() => ({
     isOpen: false,
   }), {
-    onToggleOpen: ({ isOpen }) => () => ({
-      isOpen: !isOpen,
-    })
-  }),
+      onToggleOpen: ({ isOpen }) => () => ({
+        isOpen: !isOpen,
+      })
+    }),
   withProps({
     googleMapURL:
       'https://maps.googleapis.com/maps/api/js?key=AIzaSyDxvyxdfpn92FdMg8gAYSUBCW0--1zHdWo&v=3.exp&libraries=geometry,drawing,places',
@@ -30,9 +31,11 @@ const StyledMap = compose(
   withScriptjs,
   withGoogleMap,
 )(props => (
+
   <div>
-    <AppBar style={{ marginTop: '1%' }} />
-    <GoogleMap
+     <AppBar style={{zIndex:1}}/>
+      <GoogleMap
+      style={{zIndex:2}}
       defaultZoom={13}
       defaultCenter={{ lat: 52.379189, lng: 4.898455 }}
       defaultOptions={{
@@ -48,10 +51,10 @@ const StyledMap = compose(
     >
       <Marker position={{ lat: 52.372, lng: 4.891 }} />
       <Marker position={{ lat: 52.372, lng: 4.891 }} options={{ icon: '../images/smokebullle.png' }} onClick={props.onToggleOpen}
->
-{props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
-      </InfoWindow>}
-     </Marker>
+      >
+        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
+        </InfoWindow>}
+      </Marker>
       <Marker position={{ lat: 52.3739315, lng: 4.880875899999978 }} options={{ icon: '../images/smokebullle.png' }} />
       <Marker position={{ lat: 52.35024434191204, lng: 4.88150973951781 }} options={{ icon: '../images/smokebullle.png' }} />
     </GoogleMap>

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './AppBar.css'
+import DamParklogo from '../images/DamParklogo.svg';
 
 class AppBar extends Component {
   render() { 
     return ( 
-      <h1>
-        Dam'Park
-      </h1>
+      <img src={DamParklogo} alt="LogoDamPark" style={{marginTop:-20}}/>
      )
   }
 }
