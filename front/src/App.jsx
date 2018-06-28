@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import BottomNavigation from './components/BottomNavigation';
-import AppBar from './components/AppBar';
+import StyledMal from './components/Map/Map2'
+import StyledMap from './components/Map/Map2';
 
 
 const App = () => (
   <div>
-    <AppBar />
+
     <Switch>
-      <Route exact path="/" component={BottomNavigation} />
+      <Route exact path="/" component={StyledMap} />
     </Switch>
   </div>
 );
