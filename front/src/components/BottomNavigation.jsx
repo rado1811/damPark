@@ -17,10 +17,24 @@ const styles = {
 };
 
 class LabelBottomNavigation extends React.Component {
-  state = {
-    value: 'recents',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activites: [],
+      value: 'recents'
+    };
+  }
 
+  componentDidMount() {
+    this.filterBy();
+  }
+
+  filterBy(opt = "") {
+    fetch(`/api/theme/${opt}`)
+      .then(res => res.json())
+      .then(activites => this.setState({ activites }));
+  }
+    
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -35,7 +49,7 @@ class LabelBottomNavigation extends React.Component {
       <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
         <BottomNavigationAction value="smoke" icon={<img src={Smoke} alt="logo_cannabis" width="50px" height="auto"/>} />
         <BottomNavigationAction value="art" icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
-        <BottomNavigationAction value="hero" icon={<img src={mataG} alt="logo_mata" width="80px" height="auto" marginBottom="10px"/>} />
+        <BottomNavigationAction style={{marginBottom:'10px'}} value="hero" icon={<img src={mataG} alt="logo_mata" width="80px" height="auto" marginBottom="10px"/>} />
         <BottomNavigationAction value="love" icon={<img src={Love} alt="logo_love"  width="50px" height="auto"/>} />
         <BottomNavigationAction value="eat" icon={<img src={Eat} alt="logo_eat" width="50px" height="auto"/>} />
       </BottomNavigation>
