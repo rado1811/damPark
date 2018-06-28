@@ -11,6 +11,8 @@ import Eat from '../images/eat.svg';
 import mataG from '../images/mataG.svg';
 import vanGB from '../images/vanGB.svg';
 
+
+
 const styles = {
   root: {
     width: 500,
@@ -58,6 +60,7 @@ class LabelBottomNavigation extends React.Component {
                                 icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
         <BottomNavigationAction value="hero" 
                                 style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}} 
+                                onClick={this.handleOpen}
                                 icon={<img src={vanGB} alt="logo_guide" width="100px" height="auto"/>} />
         <BottomNavigationAction value="love" 
                                 style={{padding: '1px'}} 
