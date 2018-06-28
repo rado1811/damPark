@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import Smoke from '../images/smoke.svg';
 import Art from '../images/art.svg';
 import Love from '../images/love.svg';
 import Eat from '../images/eat.svg';
-import houtenG from '../images/houtenG.svg';
-import mataG from '../images/mataG.png';
+import mataG from '../images/mataG.svg';
 
 const styles = {
   root: {
@@ -36,13 +33,11 @@ class LabelBottomNavigation extends React.Component {
     <div>
     <Grid container xs={12}md={12}>
       <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction value="smoke" icon={<img src={Smoke} alt="logo_cannabis" width="40px" height="auto"/>} />
-        <BottomNavigationAction value="art" icon={<img src={Art} alt="logo_art" width="40px" height="auto"/>} />
-        <Button style={{height:'auto'}} variant="fab" color="inherit" aria-label="add" className={classes.button}>
-          <Icon><img src={mataG} alt="AddIcon"/></Icon>
-        </Button>
-    <BottomNavigationAction value="love" icon={<img src={Love} alt="logo_love"  width="40px" height="auto"/>} />
-        <BottomNavigationAction value="eat" icon={<img src={Eat} alt="logo_eat" width="40px" height="auto"/>} />
+        <BottomNavigationAction value="smoke" icon={<img src={Smoke} alt="logo_cannabis" width="50px" height="auto"/>} />
+        <BottomNavigationAction value="art" icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
+        <BottomNavigationAction value="hero" icon={<img src={mataG} alt="logo_mata" width="80px" height="auto" marginBottom="10px"/>} />
+        <BottomNavigationAction value="love" icon={<img src={Love} alt="logo_love"  width="50px" height="auto"/>} />
+        <BottomNavigationAction value="eat" icon={<img src={Eat} alt="logo_eat" width="50px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     </div>
