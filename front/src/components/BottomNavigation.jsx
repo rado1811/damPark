@@ -9,6 +9,7 @@ import Art from '../images/art.svg';
 import Love from '../images/love.svg';
 import Eat from '../images/eat.svg';
 import mataG from '../images/mataG.svg';
+import vanGB from '../images/vanGB.svg';
 
 const styles = {
   root: {
@@ -45,13 +46,26 @@ class LabelBottomNavigation extends React.Component {
 
     return (
     <div>
-    <Grid container xs={12}md={12}>
-      <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction value="smoke" icon={<img src={Smoke} alt="logo_cannabis" width="50px" height="auto"/>} />
-        <BottomNavigationAction value="art" icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
-        <BottomNavigationAction style={{marginBottom:'10px'}} value="hero" icon={<img src={mataG} alt="logo_mata" width="80px" height="auto" marginBottom="10px"/>} />
-        <BottomNavigationAction value="love" icon={<img src={Love} alt="logo_love"  width="50px" height="auto"/>} />
-        <BottomNavigationAction value="eat" icon={<img src={Eat} alt="logo_eat" width="50px" height="auto"/>} />
+    <Grid container>
+      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+        <BottomNavigationAction value="smoke" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("smoke")} 
+                                icon={<img src={Smoke} alt="logo_cannabis" width="60px" height="auto"/>} />
+        <BottomNavigationAction value="art" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("art")} 
+                                icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
+        <BottomNavigationAction value="hero" 
+                                style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}} 
+                                icon={<img src={vanGB} alt="logo_guide" width="100px" height="auto"/>} />
+        <BottomNavigationAction value="love" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("love")} 
+                                icon={<img src={Love} alt="logo_love"  width="60px" height="auto"/>} />
+        <BottomNavigationAction value="eat" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("eat")}icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     </div>
