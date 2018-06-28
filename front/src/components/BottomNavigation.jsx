@@ -10,8 +10,8 @@ import Smoke from '../images/smoke.svg';
 import Art from '../images/art.svg';
 import Love from '../images/love.svg';
 import Eat from '../images/eat.svg';
-
-
+import houtenG from '../images/houtenG.svg';
+import mataG from '../images/mataG.png';
 
 const styles = {
   root: {
@@ -34,15 +34,15 @@ class LabelBottomNavigation extends React.Component {
 
     return (
     <div>
-    <Grid container xs={12} s={12}>
+    <Grid container xs={12}md={12}>
       <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction value="smoke" icon={<Icon><img src={Smoke} alt="logo_canabis"/></Icon>} />
-        <BottomNavigationAction value="art" icon={<Icon><img src={Art} alt="logo_art"/></Icon>} />
-        <Button style={{height:100}} variant="fab" color="inherit" aria-label="add" className={classes.button}>
-          <Icon><img src="https://image.flaticon.com/icons/svg/188/188987.svg" alt="AddIcon"/></Icon>
+        <BottomNavigationAction value="smoke" icon={<img src={Smoke} alt="logo_cannabis" width="40px" height="auto"/>} />
+        <BottomNavigationAction value="art" icon={<img src={Art} alt="logo_art" width="40px" height="auto"/>} />
+        <Button style={{height:'auto'}} variant="fab" color="inherit" aria-label="add" className={classes.button}>
+          <Icon><img src={mataG} alt="AddIcon"/></Icon>
         </Button>
-        <BottomNavigationAction value="love" icon={<Icon><img src={Love} alt="logo_love"/></Icon>} />
-        <BottomNavigationAction value="eat" icon={<Icon><img src={Eat} alt="logo_eat"/></Icon>} />
+    <BottomNavigationAction value="love" icon={<img src={Love} alt="logo_love"  width="40px" height="auto"/>} />
+        <BottomNavigationAction value="eat" icon={<img src={Eat} alt="logo_eat" width="40px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     </div>
