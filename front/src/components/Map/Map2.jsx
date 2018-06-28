@@ -42,7 +42,6 @@ class SimpleMap extends Component {
             text={'Amsterdam'}
           />
         </GoogleMapReact>
-        <p>state : {this.state?JSON.stringify(this.state.childActivites):""}</p>
         <div className="towns">
             <p>{
               this.state.childActivites.map(activite => (

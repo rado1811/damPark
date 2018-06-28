@@ -56,7 +56,7 @@ class LabelBottomNavigation extends React.Component {
         <BottomNavigationAction value="smoke" 
                                 style={{padding: '1px'}} 
                                 onClick={() => this.filterBy("coffee") }
-                                onClick={() => this.send(this.state.activites.NOM)} 
+                                onClick={() => this.send(this.state.activites)} 
                                 icon={<img src={Smoke} alt="logo_cannabis" width="60px" height="auto"/>} />
         <BottomNavigationAction value="art" 
                                 style={{padding: '1px'}} 
