@@ -17,14 +17,11 @@ import dave from '../images/dave.svg';
 import entrance from '../images/buttoniconecity.svg';
 import './modalGuide.css';
 
-
-
 const styles = {
   root: {
     width: 500,
   },
 };
-
 
 class LabelBottomNavigation extends React.Component {
   constructor(props) {
@@ -94,7 +91,7 @@ class LabelBottomNavigation extends React.Component {
           onClose={this.handleClose}
         >
           <div className='ModalGuide'>
-          <img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto"/>
+          <img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto" padding="0 auto"/>
             <Typography variant="title" id="modal-title">
               Text in a modal
             </Typography>

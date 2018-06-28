@@ -3,13 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 import StyledMap from './components/Map/Map2';
 import Loading from './components/Loading';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       wait: false,
-
     };
   }
 
@@ -32,6 +30,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;
