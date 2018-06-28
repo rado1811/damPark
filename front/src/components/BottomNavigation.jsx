@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
 import Smoke from '../images/smoke.svg';
 import Art from '../images/art.svg';
 import Love from '../images/love.svg';
@@ -13,12 +15,14 @@ import vincent from '../images/vincent.svg';
 import houten from '../images/houten.svg';
 import dave from '../images/dave.svg';
 import entrance from '../images/buttoniconecity.svg';
+import './modalGuide.css';
 
 const styles = {
   root: {
     width: 500,
   },
 };
+
 
 class LabelBottomNavigation extends React.Component {
   constructor(props) {
@@ -27,24 +31,27 @@ class LabelBottomNavigation extends React.Component {
       activites: [],
       centerButton: entrance,
       value: 'recents',
+      open: false,
     };
   }
 
-  // componentDidMount() {
-  //   this.filterBy();
-  // }
-
-  
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
       .then(activites => this.setState({ activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
       console.log('1', this.state.activites);
-      console.log('2', this.state.centerButton);
   }
     
   handleChange = (event, value) => {
     this.setState({ value });
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
   render() {
@@ -64,9 +71,11 @@ class LabelBottomNavigation extends React.Component {
                                 style={{padding: '1px'}} 
                                 onClick={() => this.filterBy("art")} 
                                 icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
-        <BottomNavigationAction value="hero" 
-                                style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}} 
+        <BottomNavigationAction value="guide" 
+                                style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}}
+                                onClick={this.handleOpen} 
                                 icon={<img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto"/>} />
+
         <BottomNavigationAction value="love" 
                                 style={{padding: '1px'}} 
                                 onClick={() => this.filterBy("love")} 
@@ -76,6 +85,22 @@ class LabelBottomNavigation extends React.Component {
                                 onClick={() => this.filterBy("eat")}icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
+    <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div className='ModalGuide'>
+          <img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto"/>
+            <Typography variant="title" id="modal-title">
+              Text in a modal
+            </Typography>
+            <Typography variant="subheading" id="simple-modal-description">
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+          </div>
+        </Modal>
     </div>
     );
   }
