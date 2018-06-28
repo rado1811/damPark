@@ -23,7 +23,7 @@ router.get('/theme/cannabis', (req, res) => {
   });
 });
 
-router.get('/theme/restaurant', (req, res) => {
+router.get('/theme/eat', (req, res) => {
   connection.query(`SELECT * FROM attractions WHERE THEME='eat'`, (err, data) => {
     if (err) {
       res.send(err);
@@ -33,7 +33,7 @@ router.get('/theme/restaurant', (req, res) => {
   });
 });
 
-router.get('/theme/musee', (req, res) => {
+router.get('/theme/art', (req, res) => {
   connection.query(`SELECT * FROM attractions WHERE THEME='art'`, (err, data) => {
     if (err) {
       res.send(err);
@@ -43,7 +43,7 @@ router.get('/theme/musee', (req, res) => {
   });
 });
 
-router.get('/theme/hot', (req, res) => {
+router.get('/theme/love', (req, res) => {
   connection.query(`SELECT * FROM attractions WHERE THEME='love'`, (err, data) => {
     if (err) {
       res.send(err);
