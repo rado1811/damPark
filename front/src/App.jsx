@@ -1,17 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import BottomNavigation from './components/BottomNavigation';
-import FilterTheme from './components/FilterTheme';
+import AppBar from './components/AppBar';
 
 
 const App = () => (
   <div>
-    <h1>
-      DAM PARK
-    </h1>
+    <AppBar />
     <Switch>
       <Route exact path="/" component={BottomNavigation} />
-      <Route exact path="/filtertheme" component={FilterTheme} />
     </Switch>
   </div>
 );
