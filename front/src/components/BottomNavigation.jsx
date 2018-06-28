@@ -47,7 +47,7 @@ class LabelBottomNavigation extends React.Component {
     return (
     <div>
     <Grid container xs={12} s={12}>
-      <BottomNavigation style={{marginTop:'100%'}} value={value} onChange={this.handleChange} className={classes.root}>
+      <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
         <BottomNavigationAction value="love" icon={<Icon onClick={() => this.filterBy("love")}><img src="https://image.flaticon.com/icons/svg/109/109577.svg" alt="logo_canabis"/></Icon>} />
         <BottomNavigationAction value="eat" icon={<Icon onClick={() => this.filterBy("eat")}><img src="https://image.flaticon.com/icons/svg/934/934334.svg" alt="logo_canabis"/></Icon>} />
         <Button variant="fab" color="inherit" aria-label="add" className={classes.button}>
