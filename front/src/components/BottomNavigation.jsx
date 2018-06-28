@@ -17,6 +17,8 @@ import dave from '../images/dave.svg';
 import entrance from '../images/buttoniconecity.svg';
 import './modalGuide.css';
 
+
+
 const styles = {
   root: {
     width: 500,
