@@ -5,32 +5,31 @@ import BottomNavigation from './components/BottomNavigation';
 const demoFancyMapStyles = require('./style.json');
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
+
 
   componentDidMount() {
-    this.fetchWithTimeOut();
+    fetch('/api/theme')
+      .then(res => res.json())
+      .then(data => this.setState({ data }));
+  }
 
-    const myLatLng = { lat: 52.379189, lng: 4.898455 };
-    const iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+  componentDidUpdate() {
+    console.log(this.state.data);
     const icons = {
-      weed: {
-        icon: `${iconBase}parking_lot_maps.png`,
+      love: {
+        icon: './images/smokegreen.svg',
       },
       eat: {
-        icon: `${iconBase}library_maps.png`,
+        icon: '',
       },
       culture: {
-        icon: `${iconBase}info-i_maps.png`,
+        icon: '',
       },
     };
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: 52.379189, lng: 4.898455 },
-      zoom: 13,
+
+      center: { lat: 52.37186039999999, lng: 4.895860999999968 },
+      zoom: 14,
       styles: demoFancyMapStyles,
       options: {
         streetViewControl: false,
@@ -40,25 +39,39 @@ class App extends Component {
         zoomControl: false,
         rotateControl: false,
         fullscreenControl: false,
+        minZoom: 11,
+        maxZoom: 18 ,
       },
     });
-    this.state.data.map((activites) => {
+    this.state.data.forEach((activites) => {
+      console.log(activites.LAT);
+      console.log(activites.LNG);
+      console.log(activites.IMAGE);
+      const markers = activites;
+
       const marker = new window.google.maps.Marker({
-        lat: activites.LAT,
-        lng: activites.LNG,
+        position: { lat: activites.LAT, lng: activites.LNG },
+        icon: {
+          url: './images/smokebullle.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          scaledSize: new window.google.maps.Size(80, 80),
+          
+        },
         map,
       });
     });
-    const marker = new window.google.maps.Marker({
-      position: myLatLng,
-      map,
-      title: 'Hello World!',
-    });
+    // const marker = new window.google.maps.Marker({
+    //   position: this.state.myLatLng,
+    //   map,
+    //   title: 'Hello World!',
+    // });
   }
 
   render() {
     return (
       <div>
+        <marker />
+>
         <div id="map" style={{ height: '90vh', width: '100vw' }} />
         <BottomNavigation />
       </div>
