@@ -1,65 +1,63 @@
-import React from 'react';
-import { compose, withProps, withStateHandlers } from 'recompose';
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-  InfoWindow,
-} from 'react-google-maps';
+import React, { Component } from 'react';
+import GoogleMapReact from 'google-map-react';
 import BottomNavigation from '../BottomNavigation';
-import AppBar from '../AppBar';
-import './Map2.css';
+ 
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-const demoFancyMapStyles = require('./style.json');
 
-const StyledMap = compose(
-  withStateHandlers(() => ({
-    isOpen: false,
-  }), {
-      onToggleOpen: ({ isOpen }) => () => ({
-        isOpen: !isOpen,
-      })
-    }),
-  withProps({
-    googleMapURL:
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyDxvyxdfpn92FdMg8gAYSUBCW0--1zHdWo&v=3.exp&libraries=geometry,drawing,places',
-    loadingElement: <div style={{ height: '90vh' }} />,
-    containerElement: <div style={{ height: '90vh' }} />,
-    mapElement: <div style={{ height: '90vh' }} />,
-  }),
-  withScriptjs,
-  withGoogleMap,
-)(props => (
+ 
+class SimpleMap extends Component {
+  static defaultProps = {
+    center: {
+      lat: 52.379189,
+      lng: 4.898455
+    },
+    zoom: 13,
+  };
+  state= {
+    childActivites: []
 
-  <div>
-     <AppBar style={{zIndex:1}}/>
-      <GoogleMap
-      style={{zIndex:2}}
-      defaultZoom={13}
-      defaultCenter={{ lat: 52.379189, lng: 4.898455 }}
-      defaultOptions={{
-        styles: demoFancyMapStyles,
-        streetViewControl: false,
-        scaleControl: false,
-        mapTypeControl: false,
-        panControl: false,
-        zoomControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-      }}
-    >
-      <Marker position={{ lat: 52.372, lng: 4.891 }} />
-      <Marker position={{ lat: 52.372, lng: 4.891 }} options={{ icon: '../images/smokebullle.png' }} onClick={props.onToggleOpen}
-      >
-        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}><p>Yo</p>
-        </InfoWindow>}
-      </Marker>
-      <Marker position={{ lat: 52.3739315, lng: 4.880875899999978 }} options={{ icon: '../images/smokebullle.png' }} />
-      <Marker position={{ lat: 52.35024434191204, lng: 4.88150973951781 }} options={{ icon: '../images/smokebullle.png' }} />
-    </GoogleMap>
-    <BottomNavigation />
-  </div>
-));
+  }
 
-export default StyledMap;
+  send=(activites)=> {
+    this.setState({
+      childActivites:activites
+    })
+  }
+
+
+ 
+  render() {
+    return (
+      // Important! Always set the container height explicitly
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyDxvyxdfpn92FdMg8gAYSUBCW0--1zHdWo'}}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+        >
+          <AnyReactComponent
+            lat={52.365854}
+            lng={4.895340}
+            text={'Amsterdam'}
+          />
+        </GoogleMapReact>
+        <p>state : {this.state?JSON.stringify(this.state.childActivites):""}</p>
+        <div className="towns">
+            <p>{
+              this.state.childActivites.map(activite => (
+                <div key={activite.id} className="town">
+                  <span>{activite.id}</span>
+                </div>
+              ))
+            }
+            </p>
+          </div>
+        <BottomNavigation send={this.send}/>
+
+      </div>
+    );
+  }
+}
+ 
+export default SimpleMap;
