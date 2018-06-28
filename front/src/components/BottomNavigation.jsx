@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-// import VanG from '../../public/images/vanG';
-
+import Smoke from '../images/smoke.svg';
+import Art from '../images/art.svg';
+import Love from '../images/love.svg';
+import Eat from '../images/eat.svg';
+import mataG from '../images/mataG.svg';
+import vanGB from '../images/vanGB.svg';
 
 const styles = {
   root: {
@@ -34,8 +36,6 @@ class LabelBottomNavigation extends React.Component {
       .then(activites => this.setState({ activites }));
   }
     
-  
-
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -46,15 +46,26 @@ class LabelBottomNavigation extends React.Component {
 
     return (
     <div>
-    <Grid container xs={12} s={12}>
-      <BottomNavigation style={{marginTop:'1%'}} value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction value="love" icon={<Icon onClick={() => this.filterBy("love")}><img src="https://image.flaticon.com/icons/svg/109/109577.svg" alt="logo_canabis"/></Icon>} />
-        <BottomNavigationAction value="eat" icon={<Icon onClick={() => this.filterBy("eat")}><img src="https://image.flaticon.com/icons/svg/934/934334.svg" alt="logo_canabis"/></Icon>} />
-        <Button variant="fab" color="inherit" aria-label="add" className={classes.button}>
-          <Icon><img src="https://image.flaticon.com/icons/svg/188/188987.svg" alt="AddIcon"/></Icon>
-        </Button>
-        <BottomNavigationAction value="smoke" icon={<Icon onClick={() => this.filterBy("coffee")}><img src="https://image.flaticon.com/icons/svg/771/771002.svg" alt="logo_canabis"/></Icon>} />
-        <BottomNavigationAction value="art" icon={<Icon onClick={() => this.filterBy("art")}><img src="https://image.flaticon.com/icons/svg/15/15654.svg" alt="logo_canabis"/></Icon>} />
+    <Grid container>
+      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+        <BottomNavigationAction value="smoke" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("coffee")} 
+                                icon={<img src={Smoke} alt="logo_cannabis" width="60px" height="auto"/>} />
+        <BottomNavigationAction value="art" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("art")} 
+                                icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
+        <BottomNavigationAction value="hero" 
+                                style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}} 
+                                icon={<img src={vanGB} alt="logo_guide" width="100px" height="auto"/>} />
+        <BottomNavigationAction value="love" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("love")} 
+                                icon={<img src={Love} alt="logo_love"  width="60px" height="auto"/>} />
+        <BottomNavigationAction value="eat" 
+                                style={{padding: '1px'}} 
+                                onClick={() => this.filterBy("eat")}icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     </div>
