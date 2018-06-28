@@ -13,8 +13,8 @@ router.get('/theme', (req, res) => {
   });
 });
 
-router.get('/theme/cannabis', (req, res) => {
-  connection.query(`SELECT * FROM attractions WHERE THEME='cannabis'`, (err, data) => {
+router.get('/theme/coffee', (req, res) => {
+  connection.query(`SELECT * FROM attractions WHERE THEME='coffee'`, (err, data) => {
     if (err) {
       res.send(err);
     } else {

@@ -53,7 +53,7 @@ class LabelBottomNavigation extends React.Component {
         <Button variant="fab" color="inherit" aria-label="add" className={classes.button}>
           <Icon><img src="https://image.flaticon.com/icons/svg/188/188987.svg" alt="AddIcon"/></Icon>
         </Button>
-        <BottomNavigationAction value="smoke" icon={<Icon onClick={() => this.filterBy("cannabis")}><img src="https://image.flaticon.com/icons/svg/771/771002.svg" alt="logo_canabis"/></Icon>} />
+        <BottomNavigationAction value="smoke" icon={<Icon onClick={() => this.filterBy("coffee")}><img src="https://image.flaticon.com/icons/svg/771/771002.svg" alt="logo_canabis"/></Icon>} />
         <BottomNavigationAction value="art" icon={<Icon onClick={() => this.filterBy("art")}><img src="https://image.flaticon.com/icons/svg/15/15654.svg" alt="logo_canabis"/></Icon>} />
       </BottomNavigation>
     </Grid>
