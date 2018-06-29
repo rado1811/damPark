@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Loading from './components/Loading';
 import BottomNavigation from './components/BottomNavigation';
+import LogoMap from './components/LogoMap';
 import AttractionCard from './components/AttractionCard';
 
 const demoFancyMapStyles = require('./style.json');
@@ -104,8 +105,8 @@ class App extends Component {
           ? <Loading />
           : (
             <div>
-              <div id="map" style={{ height: '90vh', width: '100vw' }} />
-
+              <LogoMap />
+              <div id="map" style={{ height: '80vh', width: '100vw' }} />
               <BottomNavigation 
                 toMap={this.toMap} />
             </div>
