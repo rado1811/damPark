@@ -56,31 +56,27 @@ const AttractionCard = (props) => {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Avatar
             alt="ImageCard"
-            src="/images/thesexpeepshow.jpg"
-            // src={props.image}
+            src={props.image}
             className={classes.bigAvatar}
             label="HELLO"
           />
           <Typography className={classes.titleCard}>
-            {/* {props.nom} */}
+            {props.nom}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.heading}>
           <Typography className={classes.textCard}>
-            {/* {props.descriptif} */}
+            {props.descriptif}
                 Ouverture :
-            {/* {props.ouverture} */}
+            {props.ouverture}
             <br />
                 Fermeture :
-            {/* {props.fermeture} */}
+            {props.fermeture}
             <br />
                 Age minimum:
-            {/* {props.age} */}
+            {props.age}
             <br />
-            {/* Accessibilité :
-            <img src={{props.accessibilite} ? {AccessOk} : {AccessNotOk}} alt='accessibilite'/> */}
-                Accessibilité :
-            <img src={AccessOk} alt="accessibilite" />
+
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

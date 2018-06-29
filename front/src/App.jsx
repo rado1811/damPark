@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { Route, Switch } from 'react-router-dom';
 import Loading from './components/Loading';
 import BottomNavigation from './components/BottomNavigation';
+import AttractionCard from './components/AttractionCard';
 
 const demoFancyMapStyles = require('./style.json');
 
@@ -17,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => { this.fetchMyFetch()}, 3000);
+    setTimeout(() => { this.fetchMyFetch() ;}, 3000);
   }
 
   fetchMyFetch() {
@@ -59,9 +61,22 @@ class App extends Component {
     this.state.data.forEach((activites) => {
       console.log(activites.LAT);
       console.log(activites.LNG);
-      console.log(activites.IMAGE);
+      console.log(activites.NOM);
       const markers = activites;
       const logo = './images/markers/DamParklogo.svg';
+      const contentString = ReactDOMServer.renderToString(<AttractionCard 
+        image={activites.IMAGE}
+        nom={activites.NOM}
+        descriptif={activites.DESCRIPTIF}
+        ouverture={activites.OUVERTURE}
+        fermeture={activites.FERMETURE}
+        age={activites.AGE}
+        accessibilite={activites.ACCESSIBILITE}
+        
+         />);
+      const infowindow = new window.google.maps.InfoWindow({
+        content: contentString,
+      });
       const marker = new window.google.maps.Marker({
         position: { lat: activites.LAT, lng: activites.LNG },
         icon: {
@@ -71,6 +86,9 @@ class App extends Component {
 
         },
         map,
+      });
+      marker.addListener('click', () => {
+        infowindow.open(map, marker, contentString);
       });
     });
   }
@@ -83,7 +101,7 @@ class App extends Component {
           : (
             <div>
               <div id="map" style={{ height: '90vh', width: '100vw' }} />
-              <BottomNavigation />
+              <BottomNavigation />       
             </div>
           )
         }
