@@ -20,13 +20,14 @@ class LabelBottomNavigation extends React.Component {
       value: 'recents',
       open: false,
       paroles: '',
+      accueil:'WELKOM TO PARADISE'
     };
   }
 
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
-      .then(activites => this.setState({ paroles: activites[0].paroles_guide, activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
+      .then(activites => this.setState({ paroles: activites[0].paroles_guide, accueil: activites[0].accueil_guide, activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
   }
     
   handleChange = (event, value) => {
@@ -77,7 +78,7 @@ class LabelBottomNavigation extends React.Component {
           <div className='ModalGuide'>
           <img src={this.state.centerButton} alt="logo_guide" width="100px" height="auto"/>
             <Typography variant="title" id="modal-title">
-              Welkom!
+            {this.state.accueil}
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
               {this.state.paroles}
