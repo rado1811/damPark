@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import ReactDOMServer from 'react-dom/server';
-import { Route, Switch } from 'react-router-dom';
-=======
->>>>>>> dev
 import Loading from './components/Loading';
 import BottomNavigation from './components/BottomNavigation';
 import AttractionCard from './components/AttractionCard';
