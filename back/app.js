@@ -4,9 +4,12 @@ import Debug from 'debug';
 import express from 'express';
 import logger from 'morgan';
 import path from 'path';
+
 // import favicon from 'serve-favicon';
 
 import index from './routes/index';
+import theme from './routes/theme';
+import guides from './routes/guides';
 
 const app = express();
 const debug = Debug('back:app');
@@ -24,6 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/api', theme);
+app.use('/api', guides);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
