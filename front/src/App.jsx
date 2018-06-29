@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import Loading from './components/Loading';
 import BottomNavigation from './components/BottomNavigation';
 
 const demoFancyMapStyles = require('./style.json');
-
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +21,13 @@ class App extends Component {
   fetchMyFetch() {
     fetch('/api/theme')
       .then(res => res.json())
-      .then(data => this.setState({ data, load: true }));
+      .then(data => this.setState({ activites: data, load: true }));
+  }
+
+  toMap=(activites) => {
+    this.setState({
+      activites: activites
+    })
   }
 
   componentDidUpdate() {
@@ -56,7 +60,7 @@ class App extends Component {
         maxZoom: 18,
       },
     });
-    this.state.data.forEach((activites) => {
+    this.state.activites.forEach((activites) => {
       console.log(activites.LAT);
       console.log(activites.LNG);
       console.log(activites.IMAGE);
@@ -83,7 +87,8 @@ class App extends Component {
           : (
             <div>
               <div id="map" style={{ height: '90vh', width: '100vw' }} />
-              <BottomNavigation />
+              <BottomNavigation 
+                toMap={this.toMap} />
             </div>
           )
         }
