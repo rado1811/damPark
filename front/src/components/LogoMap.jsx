@@ -1,5 +1,5 @@
 import React from 'react';
-import DamParkLogo from '../images/DamParklogo.svg';
+import DamParkLogo from '../images/DamParkLogo.svg';
 
 const LogoMap = () => (
   <div>
