@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Loading from './components/Loading';
 import BottomNavigation from './components/BottomNavigation';
+import LogoMap from './components/LogoMap';
 
 const demoFancyMapStyles = require('./style.json');
 
@@ -82,7 +83,8 @@ class App extends Component {
           ? <Loading />
           : (
             <div>
-              <div id="map" style={{ height: '90vh', width: '100vw' }} />
+              <LogoMap />
+              <div id="map" style={{ height: '80vh', width: '100vw' }} />
               <BottomNavigation />
             </div>
           )
