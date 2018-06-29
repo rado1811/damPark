@@ -52,21 +52,16 @@ const AttractionCard = (props) => {
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel className={classes.firstpanel}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Avatar
             alt="ImageCard"
             src={props.image}
             className={classes.bigAvatar}
             label="HELLO"
           />
-          <Typography className={classes.titleCard}>
-            {props.nom}
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails className={classes.heading}>
-          <Typography className={classes.textCard}>
+            <h1>{props.nom}</h1>
+            <br />
             {props.descriptif}
+            <br />
                 Ouverture :
             {props.ouverture}
             <br />
@@ -74,12 +69,8 @@ const AttractionCard = (props) => {
             {props.fermeture}
             <br />
                 Age minimum:
-            {props.age}
+            {props.age} ans
             <br />
-
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
     </div>
   );
 };
