@@ -61,7 +61,7 @@ class App extends Component {
       console.log(activites.LNG);
       console.log(activites.IMAGE);
       const markers = activites;
-      const logo = './images/DamParklogo.svg';
+      const logo = './images/markers/DamParklogo.svg';
       const marker = new window.google.maps.Marker({
         position: { lat: activites.LAT, lng: activites.LNG },
         icon: {
