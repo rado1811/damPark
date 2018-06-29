@@ -5,9 +5,26 @@ import BottomNavigation from './components/BottomNavigation';
 const demoFancyMapStyles = require('./style.json');
 
 class App extends Component {
+<<<<<<< Updated upstream
   // state = { 
   //   childActivites: []
   // };
+=======
+  constructor(props) {
+    super(props);
+    this.state = {
+      activites: [],
+      value: 'recents',
+      load: false,
+    }   
+  };
+
+  send=(activites)=> {
+    this.setState({
+      activites:activites
+    })
+  }
+>>>>>>> Stashed changes
 
 
   componentDidMount() {
@@ -17,7 +34,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.data);
     const icons = {
       love: {
         icon: './images/smokegreen.svg',
@@ -47,9 +63,6 @@ class App extends Component {
       },
     });
     this.state.data.forEach((activites) => {
-      console.log(activites.LAT);
-      console.log(activites.LNG);
-      console.log(activites.IMAGE);
       const markers = activites;
 
       const marker = new window.google.maps.Marker({
