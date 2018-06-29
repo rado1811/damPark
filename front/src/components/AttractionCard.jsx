@@ -6,7 +6,6 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import thesexpeepshow from '../images/thesexpeepshow.jpg';
 import AccessOk from '../images/accessibilitTrue.png';
 import AccessNotOk from '../images/accessibiliteFalse.png';
 
@@ -57,7 +56,8 @@ const AttractionCard = (props) => {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Avatar
             alt="ImageCard"
-            src={thesexpeepshow}
+            src="/images/thesexpeepshow.jpg"
+            // src={props.image}
             className={classes.bigAvatar}
             label="HELLO"
           />
@@ -77,7 +77,8 @@ const AttractionCard = (props) => {
                 Age minimum:
             {/* {props.age} */}
             <br />
-            {/* Accessibilité : <img src={{props.accessibilite} ? {AccessOk} : {AccessNotOk}} alt='accessibilite'/> */}
+            {/* Accessibilité :
+            <img src={{props.accessibilite} ? {AccessOk} : {AccessNotOk}} alt='accessibilite'/> */}
                 Accessibilité :
             <img src={AccessOk} alt="accessibilite" />
           </Typography>
