@@ -19,13 +19,14 @@ class LabelBottomNavigation extends React.Component {
       centerButton: entrance,
       value: 'recents',
       open: false,
+      paroles: '',
     };
   }
 
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
-      .then(activites => this.setState({ activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
+      .then(activites => this.setState({ paroles: activites[0].paroles_guide, activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
   }
     
   handleChange = (event, value) => {
@@ -42,7 +43,6 @@ class LabelBottomNavigation extends React.Component {
 
   render() {
     const { value } = this.state;
-
     return (
     <div>
     <Grid container>
@@ -80,7 +80,7 @@ class LabelBottomNavigation extends React.Component {
               Welkom!
             </Typography>
             <Typography variant="subheading" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              {this.state.paroles}
             </Typography>
           </div>
         </Modal>

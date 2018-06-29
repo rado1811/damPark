@@ -7,6 +7,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import thesexpeepshow from '../images/thesexpeepshow.jpg';
+import AccessOk from '../images/accessibilitTrue.png';
+import AccessNotOk from '../images/accessibiliteFalse.png';
 
 const styles = {
   root: {
@@ -60,27 +62,29 @@ const AttractionCard = (props) => {
             label="HELLO"
           />
           <Typography className={classes.titleCard}>
-          Le bol de soupe géant
+            {/* {props.nom} */}
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.heading}>
           <Typography className={classes.textCard}>
-          Piscine en forme de bol à déjeuner géant dans laquelle petits et grands peuvent se prélasser. En fonction des saisons, la piscine change de couleur : verte-salade l’été et rouge-tomate l’hiver. En plus de la couleur, cette piscine dégage un léger parfum de vacances. Maillot de bain obligatoire. <br/> <br/> 
+            {/* {props.descriptif} */}
                 Ouverture :
+            {/* {props.ouverture} */}
             <br />
                 Fermeture :
+            {/* {props.fermeture} */}
             <br />
-                Profil :
+                Age minimum:
+            {/* {props.age} */}
             <br />
-                Age :
-            <br />
+            {/* Accessibilité : <img src={{props.accessibilite} ? {AccessOk} : {AccessNotOk}} alt='accessibilite'/> */}
                 Accessibilité :
+            <img src={AccessOk} alt="accessibilite" />
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
   );
 };
-
 
 export default withStyles(styles)(AttractionCard);
