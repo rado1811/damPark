@@ -35,6 +35,10 @@ class LabelBottomNavigation extends React.Component {
     };
   }
 
+  send(activites){
+    this.props.send(activites)
+  }
+
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
@@ -65,11 +69,13 @@ class LabelBottomNavigation extends React.Component {
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
         <BottomNavigationAction value="smoke" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("coffee")} 
+                                onClick={() => this.filterBy("coffee")}
+                                onClick={() => this.send(this.state.activites)} 
                                 icon={<img src={Smoke} alt="logo_cannabis" width="60px" height="auto"/>} />
         <BottomNavigationAction value="art" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("art")} 
+                                onClick={() => this.filterBy("art")}
+                                onClick={() => this.send(this.state.activites)} 
                                 icon={<img src={Art} alt="logo_art" width="50px" height="auto"/>} />
         <BottomNavigationAction value="guide" 
                                 style={{marginTop:'-10%', paddingRight: '1px', paddingLeft: '1px'}}
@@ -78,11 +84,14 @@ class LabelBottomNavigation extends React.Component {
 
         <BottomNavigationAction value="love" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("love")} 
+                                onClick={() => this.filterBy("love")}
+                                onClick={() => this.send(this.state.activites)} 
                                 icon={<img src={Love} alt="logo_love"  width="60px" height="auto"/>} />
         <BottomNavigationAction value="eat" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("eat")}icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
+                                onClick={() => this.filterBy("eat")}
+                                onClick={() => this.send(this.state.activites)}
+                                icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     <Modal

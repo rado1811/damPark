@@ -14,6 +14,7 @@ import BottomNavigation from '../BottomNavigation';
 const demoFancyMapStyles = require('./style.json');
 
 const StyledMap = compose(
+
   withStateHandlers(() => ({
     isOpen: false,
   }), {
