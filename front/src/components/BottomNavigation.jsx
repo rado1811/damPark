@@ -27,7 +27,10 @@ class LabelBottomNavigation extends React.Component {
   filterBy(opt = "") {
     fetch(`/api/theme/${opt}`)
       .then(res => res.json())
-      .then(activites => this.setState({ paroles: activites[0].paroles_guide, accueil: activites[0].accueil_guide, activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")}));
+      .then(activites => {
+        this.setState({ paroles: activites[0].paroles_guide, accueil: activites[0].accueil_guide, activites : activites, centerButton: require("../images/"+ activites[0].image_guide+".svg")})
+        this.props.toMap(activites)
+      });
   }
     
   handleChange = (event, value) => {
@@ -42,6 +45,10 @@ class LabelBottomNavigation extends React.Component {
     this.setState({ open: false });
   };
 
+  // toMap = (activites) => {
+  //   this.props.toMap(activites)
+  // };
+
   render() {
     const { value } = this.state;
     return (
@@ -50,7 +57,9 @@ class LabelBottomNavigation extends React.Component {
       <BottomNavigation value={value} onChange={this.handleChange} width="100%">
         <BottomNavigationAction value="smoke" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("coffee")} 
+                                onClick={() => {
+                                  this.filterBy("coffee")
+                                }}
                                 icon={<img src={Smoke} alt="logo_cannabis" width="60px" height="auto"/>} />
         <BottomNavigationAction value="art" 
                                 style={{padding: '1px'}} 
@@ -66,7 +75,8 @@ class LabelBottomNavigation extends React.Component {
                                 icon={<img src={Love} alt="logo_love"  width="60px" height="auto"/>} />
         <BottomNavigationAction value="eat" 
                                 style={{padding: '1px'}} 
-                                onClick={() => this.filterBy("eat")}icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
+                                onClick={() => this.filterBy("eat")}
+                                icon={<img src={Eat} alt="logo_eat" width="60px" height="auto"/>} />
       </BottomNavigation>
     </Grid>
     <Modal
