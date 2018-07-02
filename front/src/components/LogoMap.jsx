@@ -1,10 +1,11 @@
 import React from 'react';
-import DamParkLogo from '../images/DamParkLogo.svg';
+import DamParkLogo from '../images/DamParklogo.svg';
 
 const LogoMap = () => (
   <div>
       <img
           src={DamParkLogo}
+          alt='logo DamPark'
           style={{
               width: '70%',
               marginLeft: '60px',
