@@ -27,27 +27,14 @@ class App extends Component {
       .then(data => this.setState({ activites: data, load: true }));
   }
 
-  toMap=(activites) => {
+  toMap = (activites) => {
     this.setState({
       activites: activites
     })
   }
 
   componentDidUpdate() {
-    console.log(this.state.data);
-    const icons = {
-      love: {
-        icon: './images/smokegreen.svg',
-      },
-      eat: {
-        icon: '',
-      },
-      culture: {
-        icon: '',
-      },
-    };
     const map = new window.google.maps.Map(document.getElementById('map'), {
-
       center: { lat: 52.37186039999999, lng: 4.895860999999968 },
       zoom: 14,
       styles: demoFancyMapStyles,
@@ -64,11 +51,6 @@ class App extends Component {
       },
     });
     this.state.activites.forEach((activites) => {
-      console.log(activites.LAT);
-      console.log(activites.LNG);
-      console.log(activites.NOM);
-      const markers = activites;
-      const logo = './images/markers/DamParklogo.svg';
       const contentString = ReactDOMServer.renderToString(<AttractionCard 
         image={activites.IMAGE}
         nom={activites.NOM}
@@ -78,7 +60,7 @@ class App extends Component {
         age={activites.AGE}
         accessibilite={activites.ACCESSIBILITE}
         
-         />);
+        />);
       const infowindow = new window.google.maps.InfoWindow({
         content: contentString,
       });
